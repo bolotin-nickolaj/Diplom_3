@@ -1,4 +1,3 @@
-import time
 import allure
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -39,15 +38,14 @@ class BasePage:
 
     @allure.step("Перенести элемент.")
     def drag_and_drop(self, locator_element, locator_destination):
-        source = self.driver.find_element(*locator_element)
-        target = self.driver.find_element(*locator_destination)
-        time.sleep(3)
+        source = self.find_element_to_be_clickable(locator_element)
+        target = self.find_presence_of_element_located(locator_destination)
         action_chains = ActionChains(self.driver)
         return action_chains.drag_and_drop(source, target).perform()
 
     @allure.step("Ожидание текста.")
     def waiting_text(self, locator, value):
-        wait = WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(locator, value))
+        WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(locator, value))
 
     @allure.step("Получить список элементов.")
     def get_list_of_elements(self, list_element):
