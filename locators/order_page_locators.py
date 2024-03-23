@@ -2,10 +2,15 @@ from selenium.webdriver.common.by import By
 
 
 class OrderPageLocators:
-    ORDER_CARD = (By.XPATH, "//div[contains(@class, 'OrderFeed_contentBox')]/ul/li[1]")
-    ORDER_DETAILS_CARD = (By.XPATH, "//section[2][contains(@class, 'Modal_modal__P3_V5')]")
+    # Карточка заказа
+    ORDER_CARD = (By.XPATH, "//a[contains(@class, 'OrderHistory_link__1iNby')]")
+    # Отображение карточки заказа
+    ORDER_DETAILS_CARD = (By.XPATH, "//section[contains(@class, 'opened__3ISw4')]")
+    # Лента заказов
     FEED_OF_ORDERS = (By.XPATH, "//p[@class='text text_type_digits-default']")
+    # Количество всех заказов
     ORDERS = (By.XPATH, "//p[text()='Выполнено за все время:']/following-sibling::p")
+    # Количество заказов за день
     ORDERS_IN_DAY = (By.XPATH, "//p[text()='Выполнено за сегодня:']/following-sibling::p")
-    ORDERS_READY = (By.XPATH, "//ul[contains(@class, 'OrderFeed_orderListReady')]/li[1]")
-    FIRST_OF_ORDERS_FEED = (By.XPATH, "//p[@class='text text_type_digits-default'][1]")
+    # Заказы в работе
+    ORDERS_READY = (By.XPATH, "//ul[contains(@class, 'OrderFeed_orderListReady__1YFem')]/li")

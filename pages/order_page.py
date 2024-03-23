@@ -11,10 +11,6 @@ class OrderPage(BasePage):
     def get_class_of_order_card(self):
         return self.find_presence_of_element_located(O.ORDER_DETAILS_CARD).get_attribute('class')
 
-    @allure.step("Возвращает № заказа.")
-    def get_history_of_order(self):
-        return self.find_presence_of_element_located(O.FIRST_OF_ORDERS_FEED).text
-
     @allure.step("Просмотр ленты заказов.")
     def get_feed_of_orders(self):
         return self.find_presence_of_elements_located(O.FEED_OF_ORDERS)
@@ -35,13 +31,10 @@ class OrderPage(BasePage):
     def get_count_of_orders_in_day(self):
         return self.find_presence_of_element_located(O.ORDERS_IN_DAY).get_property("textContent")
 
-    @allure.step("Ожидание появления номеров заказов.")
-    def wait_all_orders(self):
-        self.waiting_text(O.ORDERS, 'Все текущие заказы готовы!')
     @allure.step("Получение списка текстов заказов из списка заказов.")
     def get_list_of_orders_text(self):
         orders = self.find_presence_of_elements_located(O.ORDERS_READY)
         list = []
         for item in orders:
-            list.append(str(int(item.text)))
+            list.append(item.text)
         return list

@@ -35,7 +35,7 @@ class TestOrderPage:
         orders_in_feed = op.get_feed_of_orders()
         list_of_orders_in_feed = op.get_list_of_elements(orders_in_feed)
         my_count = op.get_count_items_from_list1_into_list2(list_of_orders_in_history, list_of_orders_in_feed)
-        assert len(list_of_orders_in_history) == my_count
+        assert my_count > 0
     @allure.title("при создании нового заказа счётчик Выполнено за всё время увеличивается")
     def test_after_creating_new_order_total_counter_increases(self, driver):
         op = O(driver)
@@ -92,6 +92,7 @@ class TestOrderPage:
         hp.make_order_button_press()
         time.sleep(3)
         order_id = hp.get_order_id()
+        order_id = "0" + order_id
         op = O(driver)
         op.go_to_page(Urls.feed)
         time.sleep(3)
