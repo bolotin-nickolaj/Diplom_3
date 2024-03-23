@@ -37,11 +37,6 @@ class BasePage:
     def wait_control_visibility(self, locator):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(locator), message=f'Element not found in {locator}')
 
-    @allure.step("На элемент можно нажать")
-    def wait_control_clickable(self, locator):
-        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(locator),
-                                             message=f'Element not found in {locator}')
-
     @allure.step("Перенести элемент.")
     def drag_and_drop(self, locator_element, locator_destination):
         source = self.driver.find_element(*locator_element)

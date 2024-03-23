@@ -16,6 +16,3 @@ class ForgotPasswordPage(BasePage):
     @allure.step("Ожидание загрузки страницы")
     def wait_page_load(self):
         self.wait_control_visibility(FP.EMAIL)
-    @allure.step("Ожидание загрузки страницы")
-    def wait_button_load(self):
-        self.wait_control_clickable(FP.PWD_RCVR_BUTTON)  #.wait_control_visibility(FP.PWD_RCVR_BUTTON)
