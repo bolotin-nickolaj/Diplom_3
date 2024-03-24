@@ -1,4 +1,3 @@
-import time
 import allure
 from pages.head_page import HeadPage as HP
 from pages.personal_account_page import PersonalAccountPage as PA
@@ -12,7 +11,6 @@ class TestPersonalAccount:
     def test_personal_account_click(self, driver):
         head_page = HP(driver)
         head_page.go_to_page(Urls.head_page)
-        time.sleep(3)
         head_page.personal_account_located_click()
         login_page = LP(driver)
         url = login_page.get_current_page()
@@ -26,7 +24,6 @@ class TestPersonalAccount:
         head_page = HP(driver)
         head_page.personal_account_located_click()
         pa_page = PA(driver)
-        time.sleep(3)
         pa_page.history_order_click()
         url = pa_page.get_current_page()
         assert url == Urls.order_history
@@ -37,10 +34,8 @@ class TestPersonalAccount:
         login_page.go_to_page(Urls.login)
         login_page.user_login()
         head_page = HP(driver)
-        time.sleep(3)
         head_page.personal_account_located_click()
         pa_page = PA(driver)
-        time.sleep(3)
         pa_page.exit_click()
         login_page.wait_input()
         url = pa_page.get_current_page()

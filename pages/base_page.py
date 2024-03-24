@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
 
 
 class BasePage:
@@ -16,6 +16,19 @@ class BasePage:
     @allure.step("Найти элемент")
     def find_presence_of_element_located(self, locator, time=3):
         return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator), message=f'Element not found in {locator}')
+
+    @allure.step("Найти элемент")
+    def find_visibility_of_element_located(self, locator):
+        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator=locator), message=f'Element not found in {locator}')
+
+    @allure.step("Дождаться элемента")
+    def wait_element(self, locator):
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator=locator))
+
+    @allure.step("Нажать на элемент")
+    def press_on_element(self, locator):
+        self.wait_element(locator)
+        self.find_presence_of_element_located(locator).click()
 
     @allure.step("Найти элемент")
     def find_presence_of_elements_located(self, locator, time=3):
@@ -45,9 +58,13 @@ class BasePage:
         action_chains = ActionChains(self.driver)
         return action_chains.drag_and_drop(source, target).perform()
 
-    @allure.step("Ожидание текста.")
-    def waiting_text(self, locator, value):
-        WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(locator, value))
+    @allure.step("Ожидание исчезновения текста.")
+    def waiting_text_disapear(self, locator, text):
+        WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(locator, text))
+
+    @allure.step("Ожидание появления текста")
+    def waiting_text(self, locator, text):
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(locator, text))
 
     @allure.step("Получить список элементов.")
     def get_list_of_elements(self, list_element):

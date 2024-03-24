@@ -71,8 +71,14 @@ class HeadPage(BasePage):
 
     @allure.step("Ожидание номера заказа'")
     def waiting_number_of_order(self):
-        self.waiting_text(H.NUMBER_OF_ORDER, '9999')
+        self.waiting_text_disapear(H.NUMBER_OF_ORDER, '9999')
 
     @allure.step("Получение номера заказа")
     def get_order_id(self):
-        return self.get_property_textContent_of_element(locator=H.IDENT_OF_ORDER)
+        self.waiting_text_disapear(H.NUMBER_OF_ORDER, '9999')
+        return self.find_visibility_of_element_located(locator=H.NUMBER_OF_ORDER).text
+
+    @allure.step("Закрытие окна заказа")
+    def close_order_window(self):
+        self.wait_element(locator=H.ORDER_WINDOW)
+        self.press_on_element(locator=H.ORDER_WINDOW)

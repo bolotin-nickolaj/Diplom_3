@@ -33,10 +33,12 @@ class OrderPage(BasePage):
     def get_count_of_orders_in_day(self):
         return self.get_property_textContent_of_element(locator=O.ORDERS_IN_DAY)
 
-    @allure.step("Получение списка текстов заказов из списка заказов.")
-    def get_list_of_orders_text(self):
-        orders = self.find_presence_of_elements_located(O.ORDERS_READY)
-        list = []
-        for item in orders:
-            list.append(item.text)
-        return list
+    @allure.step("Получение списка текстов заказов из списка заказов В РАБОТЕ.")
+    def get_list_of_orders_inwork_text(self):
+        orders = self.find_presence_of_elements_located(O.ORDERS_WORK)
+        return self.get_list_of_elements(orders)
+
+    @allure.step("Ожидание появления № текущего заказа в столбце В работе")
+    def wait_order_in_inwork(self, order):
+        self.waiting_text(O.ORDERS_WORK, order)
+        return self.find_visibility_of_element_located(locator=O.ORDERS_WORK).text

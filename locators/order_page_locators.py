@@ -19,4 +19,7 @@ class OrderPageLocators:
     ORDERS_IN_DAY = (By.XPATH, "//p[text()='Выполнено за сегодня:']/following-sibling::p")
 
     # Заказы в работе
-    ORDERS_READY = (By.XPATH, "//ul[contains(@class, 'OrderFeed_orderListReady__1YFem')]/li")
+    ORDERS_WORK = (By.XPATH, "//ul[contains(@class, 'OrderFeed_orderListReady__1YFem')]/li")
+
+    # Заказы готовы
+    ORDERS_READY = (By.XPATH, "//li[contains(@class, 'text text_type_digits-default mb-2')]")

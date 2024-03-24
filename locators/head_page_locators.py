@@ -34,12 +34,15 @@ class HeadPageLocators:
     ADD_TO_ORDER3 = (By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
 
     #Оформить заказ
-    MAKE_ORDER2 = (By.XPATH, "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']")
-    MAKE_ORDER = (By.XPATH, ".//button[text()='Оформить заказ']")
+    MAKE_ORDER = (By.XPATH, "//button[text()='Оформить заказ']")
 
     #Номер заказа
-    NUMBER_OF_ORDER = (By.XPATH, "//div/h2[text()='9999']")
+    NUMBER_OF_ORDER2 = (By.XPATH, "//h2[text()='9999']")
+    NUMBER_OF_ORDER = (By.XPATH, "//h2[contains(@class, 'Modal_modal__title_shadow')]")
 
     #Идентификатор заказа
     IDENT_OF_ORDER = (By.XPATH, "//p[text()='идентификатор заказа']/preceding-sibling::h2")
+
+    #Кнопка закрытия модального окна
+    ORDER_WINDOW = ('xpath', '//button[contains(@class, "modal__close")]')
 
