@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class BasePage:
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -32,6 +33,7 @@ class BasePage:
     @allure.step("Вернуть текущую страницу")
     def get_current_page(self):
         return self.driver.current_url
+
     @allure.step("Элемент виден")
     def wait_control_visibility(self, locator):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(locator), message=f'Element not found in {locator}')
@@ -53,4 +55,3 @@ class BasePage:
         for item in list_element:
             list.append(item.text)
         return list
-

@@ -2,7 +2,9 @@ import allure
 from locators.order_page_locators import OrderPageLocators as O
 from pages.base_page import BasePage
 
+
 class OrderPage(BasePage):
+
     @allure.step("Нажать на карточку заказа.")
     def order_card_press(self):
         self.find_presence_of_element_located(O.ORDER_CARD).click()

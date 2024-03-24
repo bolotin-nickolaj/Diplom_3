@@ -5,6 +5,7 @@ from pages.head_page import HeadPage as H
 from pages.login_page import LoginPage as L
 
 class TestHeadPage:
+
     @allure.title("переход по клику на «Конструктор»")
     def test_designer_click(self, driver):
         hp = H(driver)
@@ -14,6 +15,7 @@ class TestHeadPage:
         hp.designer_button_click()
         selected_element_class = hp.get_class_of_designer()
         assert 'link_active' in selected_element_class
+
     @allure.title("переход по клику на «Лента заказов»")
     def test_orders_feed_click(self, driver):
         hp = H(driver)
@@ -22,6 +24,7 @@ class TestHeadPage:
         hp.orders_feed_button_click()
         selected_element_class = hp.get_class_of_orders_feed()
         assert 'link_active' in selected_element_class
+
     @allure.title("если кликнуть на ингредиент, появится всплывающее окно с деталями")
     def test_ingredien_click(self, driver):
         hp = H(driver)
@@ -48,6 +51,7 @@ class TestHeadPage:
         hp.add_ingredient_to_order()
         new_ing_count = hp.get_count_ingredient()
         assert int(new_ing_count) == 2
+
     @allure.title("залогиненный пользователь может оформить заказ")
     def test_authorized_user_can_make_order(self, driver):
         lp = L(driver)

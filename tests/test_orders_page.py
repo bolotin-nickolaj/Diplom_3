@@ -8,6 +8,7 @@ from pages.personal_account_page import PersonalAccountPage as P
 from pages.head_page import HeadPage as H
 
 class TestOrderPage:
+
     @allure.title("если кликнуть на заказ, откроется всплывающее окно с деталями")
     def test_order_press_popup_window_with_details_will_be_open(self, driver):
         op = O(driver)
@@ -36,6 +37,7 @@ class TestOrderPage:
         list_of_orders_in_feed = op.get_list_of_elements(orders_in_feed)
         my_count = op.get_count_items_from_list1_into_list2(list_of_orders_in_history, list_of_orders_in_feed)
         assert my_count > 0
+
     @allure.title("при создании нового заказа счётчик Выполнено за всё время увеличивается")
     def test_after_creating_new_order_total_counter_increases(self, driver):
         op = O(driver)
@@ -99,4 +101,3 @@ class TestOrderPage:
         texts = op.get_list_of_orders_text()
 
         assert order_id in texts
-

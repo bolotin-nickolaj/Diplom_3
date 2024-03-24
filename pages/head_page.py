@@ -4,12 +4,15 @@ from pages.base_page import BasePage
 
 
 class HeadPage(BasePage):
+
     @allure.step("Нажатие на элемент Личный кабинет")
     def personal_account_located_click(self):
         self.find_presence_of_element_located(H.PERSONAL_ACCOUNT_REF).click()
+
     @allure.step("Найти на элемент Личный кабинет")
     def personal_account_click(self, time=20):
         self.find_element_located_click(H.PERSONAL_ACCOUNT_REF, time)
+
     @allure.step("Нажатие на элемент Личный кабинет")
     def personal_account_clickable_click(self):
         self.find_element_to_be_clickable(H.PERSONAL_ACCOUNT_REF).click()
@@ -17,10 +20,10 @@ class HeadPage(BasePage):
     @allure.step("Ожидание кнопки Войти в аккаунт")
     def waiting_for_the_login_button(self):
         self.wait_control_visibility(H.LOGIN_ACCOUNT_BUTTON)
+
     @allure.step("Ожидание ссылки Лента заказов")
     def waiting_for_the_orders_feed_button(self):
         self.wait_control_visibility(H.ORDER_FEED_REF)
-
 
     @allure.step("Нажатие на кнопку Конструктор")
     def designer_button_click(self):
@@ -33,6 +36,7 @@ class HeadPage(BasePage):
     @allure.step("Получение класса элемента Конструктор")
     def get_class_of_designer(self):
         return self.find_presence_of_element_located(H.DESIGNER_REF).get_attribute('class')
+
     @allure.step("Получение класса элемента Лента заказов")
     def get_class_of_orders_feed(self):
         return self.find_presence_of_element_located(H.ORDER_FEED_REF).get_attribute('class')
