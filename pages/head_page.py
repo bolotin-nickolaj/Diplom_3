@@ -35,11 +35,11 @@ class HeadPage(BasePage):
 
     @allure.step("Получение класса элемента Конструктор")
     def get_class_of_designer(self):
-        return self.find_presence_of_element_located(H.DESIGNER_REF).get_attribute('class')
+        return self.get_attribute_class_of_element(locator=H.DESIGNER_REF)
 
     @allure.step("Получение класса элемента Лента заказов")
     def get_class_of_orders_feed(self):
-        return self.find_presence_of_element_located(H.ORDER_FEED_REF).get_attribute('class')
+        return self.get_attribute_class_of_element(locator=H.ORDER_FEED_REF)
 
     @allure.step("Нажатие на ингредиент")
     def ingredient_click(self):
@@ -47,7 +47,7 @@ class HeadPage(BasePage):
 
     @allure.step("Получение класса вкладки Лента заказов")
     def get_class_of_ingredient(self):
-        return self.find_presence_of_element_located(H.ING_WINDOW).get_attribute('class')
+        return self.get_attribute_class_of_element(locator=H.ING_WINDOW)
 
     @allure.step("Закрытие детализации ингридиента")
     def close_ing_det_click(self):
@@ -55,7 +55,7 @@ class HeadPage(BasePage):
 
     @allure.step("Получение количества ингридиентов")
     def get_count_ingredient(self):
-        return self.get_property_of_element_property_name_textContent(locator=H.COUNT_OF_INGREDIENT)
+        return self.get_property_textContent_of_element(locator=H.COUNT_OF_INGREDIENT)
 
     @allure.step("Добавление ингредиента в заказ")
     def add_ingredient_to_order(self):
@@ -75,4 +75,4 @@ class HeadPage(BasePage):
 
     @allure.step("Получение номера заказа")
     def get_order_id(self):
-        return self.get_property_of_element_property_name_textContent(locator=H.IDENT_OF_ORDER)
+        return self.get_property_textContent_of_element(locator=H.IDENT_OF_ORDER)

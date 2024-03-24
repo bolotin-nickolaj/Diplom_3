@@ -11,7 +11,7 @@ class OrderPage(BasePage):
 
     @allure.step("Просмотр заказа.")
     def get_class_of_order_card(self):
-        return self.find_presence_of_element_located(O.ORDER_DETAILS_CARD).get_attribute('class')
+        return self.get_attribute_class_of_element(locator=O.ORDER_DETAILS_CARD)
 
     @allure.step("Просмотр ленты заказов.")
     def get_feed_of_orders(self):
@@ -27,11 +27,11 @@ class OrderPage(BasePage):
 
     @allure.step("Возвращает количество всех заказов.")
     def get_count_of_orders(self):
-        return self.get_property_of_element_property_name_textContent(locator=O.ORDERS)
+        return self.get_property_textContent_of_element(locator=O.ORDERS)
 
     @allure.step("Возвращает количества заказов за день.")
     def get_count_of_orders_in_day(self):
-        return self.get_property_of_element_property_name_textContent(locator=O.ORDERS_IN_DAY)
+        return self.get_property_textContent_of_element(locator=O.ORDERS_IN_DAY)
 
     @allure.step("Получение списка текстов заказов из списка заказов.")
     def get_list_of_orders_text(self):

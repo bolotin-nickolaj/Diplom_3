@@ -57,5 +57,9 @@ class BasePage:
         return list
 
     @allure.step("Получить свойство textContent")
-    def get_property_of_element_property_name_textContent(self, locator):
+    def get_property_textContent_of_element(self, locator):
         return self.find_presence_of_element_located(locator).get_property("textContent")
+
+    @allure.step("Получить атрибут элемента class")
+    def get_attribute_class_of_element(self, locator):
+        return self.find_presence_of_element_located(locator).get_attribute("class")
