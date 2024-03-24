@@ -27,11 +27,11 @@ class OrderPage(BasePage):
 
     @allure.step("Возвращает количество всех заказов.")
     def get_count_of_orders(self):
-        return self.find_presence_of_element_located(O.ORDERS).get_property("textContent")
+        return self.get_property_of_element_property_name_textContent(locator=O.ORDERS)
 
     @allure.step("Возвращает количества заказов за день.")
     def get_count_of_orders_in_day(self):
-        return self.find_presence_of_element_located(O.ORDERS_IN_DAY).get_property("textContent")
+        return self.get_property_of_element_property_name_textContent(locator=O.ORDERS_IN_DAY)
 
     @allure.step("Получение списка текстов заказов из списка заказов.")
     def get_list_of_orders_text(self):

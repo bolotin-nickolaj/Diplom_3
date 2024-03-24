@@ -55,7 +55,7 @@ class HeadPage(BasePage):
 
     @allure.step("Получение количества ингридиентов")
     def get_count_ingredient(self):
-        return self.find_presence_of_element_located(H.COUNT_OF_INGREDIENT).get_property("textContent")
+        return self.get_property_of_element_property_name_textContent(locator=H.COUNT_OF_INGREDIENT)
 
     @allure.step("Добавление ингредиента в заказ")
     def add_ingredient_to_order(self):
@@ -75,4 +75,4 @@ class HeadPage(BasePage):
 
     @allure.step("Получение номера заказа")
     def get_order_id(self):
-        return self.find_presence_of_element_located(H.IDENT_OF_ORDER).get_property("textContent")
+        return self.get_property_of_element_property_name_textContent(locator=H.IDENT_OF_ORDER)

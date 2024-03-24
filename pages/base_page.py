@@ -55,3 +55,7 @@ class BasePage:
         for item in list_element:
             list.append(item.text)
         return list
+
+    @allure.step("Получить свойство textContent")
+    def get_property_of_element_property_name_textContent(self, locator):
+        return self.find_presence_of_element_located(locator).get_property("textContent")
