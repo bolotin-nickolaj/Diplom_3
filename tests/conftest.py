@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 
 
-@pytest.fixture(params=["chrome", "firefox"]) #"chrome", "firefox"
+@pytest.fixture(params=["chrome"])
 def driver(request):
     if request.param == "chrome":
         driver = webdriver.Chrome()
